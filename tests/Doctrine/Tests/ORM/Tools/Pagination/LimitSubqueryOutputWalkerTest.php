@@ -9,7 +9,7 @@ class LimitSubqueryOutputWalkerTest extends PaginationTestCase
     public function testLimitSubquery()
     {
         $query = $this->entityManager->createQuery(
-            'SELECT p, C, a FROM Doctrine\Tests\ORM\Tools\Pagination\MyBlogPost p JOIN p.category C JOIN p.author a');
+            'SELECT p, c, a FROM Doctrine\Tests\ORM\Tools\Pagination\MyBlogPost p JOIN p.category c JOIN p.author a');
         $query->expireQueryCache(true);
         $limitQuery = clone $query;
         $limitQuery->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'Doctrine\ORM\Tools\Pagination\LimitSubqueryOutputWalker');
